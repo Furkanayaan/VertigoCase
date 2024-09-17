@@ -120,7 +120,6 @@ public class SpinManager : MonoBehaviour {
         while (indexOfZone >= _determineEveryZone._zoneProps.Length) {
             indexOfZone -= _determineEveryZone._zoneProps.Length;
         }
-        Debug.Log(indexOfZone);
         for (int i = 0; i < detectedObject.Length; i++) {
             int objectLevel = _determineEveryZone._zoneProps[indexOfZone]._sliceProps[i]._levelOfObject;
             int objectCount = _determineEveryZone._zoneProps[indexOfZone]._sliceProps[i]._countOfObject;

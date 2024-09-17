@@ -61,6 +61,7 @@ public class CurrencyPool : MonoBehaviour
             if (type == PoolType.Gold) CurrencyManager.I.EarnGold(remain);
             if (type == PoolType.Dollar) CurrencyManager.I.EarnDollar(remain);
             if(type == PoolType.Case) CurrencyManager.I.EarnCase(remain);
+            if(type == PoolType.SpecialGift) CurrencyManager.I.EarnSpecialGift(remain);
         }
 
         for (int i = 0; i < totalObj; i++) {
@@ -86,6 +87,7 @@ public class CurrencyPool : MonoBehaviour
                 if (type == PoolType.Gold) CurrencyManager.I.EarnGold(1);
                 if (type == PoolType.Dollar) CurrencyManager.I.EarnDollar(1);
                 if(type == PoolType.Case) CurrencyManager.I.EarnCase(1);
+                if(type == PoolType.SpecialGift) CurrencyManager.I.EarnSpecialGift(1);
                 targetParent.DOScale(new Vector3(1.3f,1.3f,1.3f), 0.2f).OnComplete(() => {
                     targetParent.DOScale(Vector3.one, 0.25f);
                 });

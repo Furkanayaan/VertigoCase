@@ -54,7 +54,7 @@ public class CurrencyManager : MonoBehaviour {
     
     // SpecialGift going to UI.
     public void SpecialGiftPoolToGo(int quantity, Vector3 currentPos) {
-        CurrencyPool.I.CurrencyAllocation(quantity, CurrencyPool.PoolType.SpecialGift, _toTheCaseUI,  currentPos);
+        CurrencyPool.I.CurrencyAllocation(quantity, CurrencyPool.PoolType.SpecialGift, _toTheSpecialGiftUI,  currentPos);
     }
     
     public void EarnGold(float quantity) {
