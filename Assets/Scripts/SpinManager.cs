@@ -69,11 +69,9 @@ public class SpinManager : MonoBehaviour {
         _spinToWin.onClick.AddListener(() => {
             _whellBG.transform.parent.gameObject.SetActive(true);
         });
-
         SetImagesForEveryZone();
     }
-    void Update()
-    {
+    void Update() {
         WheelController();
         SpinAnimation();
         ControlPopUP();
@@ -111,10 +109,7 @@ public class SpinManager : MonoBehaviour {
             
             //Determine object weights
             weights[i] = objectWeight;
-            if (i > 0) {
-                weights[i] = weights[i-1] + objectWeight;
-            }
-
+            if (i > 0) weights[i] = weights[i-1] + objectWeight;
             totalWeights += objectWeight;
             _objectCount.Add(objectCount);
         }
@@ -123,7 +118,6 @@ public class SpinManager : MonoBehaviour {
     void WheelController() {
         if (_whellBG.transform.parent.gameObject.activeSelf) _spinToWin.gameObject.SetActive(false);
         else _spinToWin.gameObject.SetActive(true);
-        
         if (!bSpin) {
             _wheelSpinButton.gameObject.SetActive(true);
             _wheelSpinCloseTap.gameObject.SetActive(true);
@@ -132,9 +126,7 @@ public class SpinManager : MonoBehaviour {
             _wheelSpinButton.gameObject.SetActive(false);
             _wheelSpinCloseTap.gameObject.SetActive(false);
         }
-
         _totalSpinCount.text = "Total Spin Count: " + wheelSpinCount;
-
         if (wheelSpinCount % 5 == 0 && wheelSpinCount % 30 != 0) {
             _whellBG.GetComponent<Image>().sprite = _silverBG;
             _wheelTitle.text = "SILVER SPIN";
@@ -156,12 +148,10 @@ public class SpinManager : MonoBehaviour {
     public void SpinWheel() {
         if (bSpin) return;
         selectedSection = GetRandomWeightedIndex();
-        
         int totalWheelSpin = Random.Range(3, 5);
         _aimNumberAsDegree = Mathf.RoundToInt(totalWheelSpin * 360f + 360f + CalculateAngle(selectedSection));
         wheelAnimationCurve = new AnimationCurve();
         wheelAnimationCurve.AddKey(0, 0);
-        
         wheelAnimationCurve.AddKey(_aimNumberAsDegree * Random.Range(60f, 80f) / 100f , _aimNumberAsDegree * Random.Range(80f, 101f) / 100f);
         wheelAnimationCurve.AddKey(_aimNumberAsDegree, _aimNumberAsDegree);
         bSpin = true;
@@ -170,7 +160,6 @@ public class SpinManager : MonoBehaviour {
     void SpinAnimation() {
         if (bSpin) {
             _wheelTime += Time.deltaTime * _aimNumberAsDegree / 4f;
-            
             _wheelMiddle.eulerAngles = Vector3.forward * wheelAnimationCurve.Evaluate(_wheelTime);
             if (_wheelTime >= _aimNumberAsDegree) {
                 wheelSpinCount++;
@@ -180,8 +169,6 @@ public class SpinManager : MonoBehaviour {
                 GetRewards(detectedObject[selectedSection].GetChild(0));
                 _objectCount.Clear();
                 SetImagesForEveryZone();
-                
-                
             }
         }
     }
@@ -210,7 +197,6 @@ public class SpinManager : MonoBehaviour {
             _reviveButton.onClick.RemoveAllListeners();
             _reviveButton.onClick.AddListener(() => {
                 if (bEnoughGold) {
-                    Debug.Log("111111111111");
                     CurrencyManager.I.LoseGold(reviveCost);
                     _bombUI.SetActive(false);
                     _whellBG.SetActive(true);
@@ -222,7 +208,6 @@ public class SpinManager : MonoBehaviour {
     
     int GetRandomWeightedIndex() {
         float randomPoint = Random.Range(0, totalWeights);
-
         for (int i = 1; i < weights.Length; i++) {
             if (randomPoint >= weights[i - 1] && randomPoint < weights[i]) {
                 return i;
@@ -231,8 +216,7 @@ public class SpinManager : MonoBehaviour {
         return 0;
     }
     
-    float CalculateAngle(int sectionIndex)
-    {
+    float CalculateAngle(int sectionIndex) {
         float anglePerSection = 360f / detectedObject.Length;
         return 360f - (sectionIndex * anglePerSection);
     }

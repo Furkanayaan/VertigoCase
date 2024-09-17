@@ -34,30 +34,25 @@ public class CurrencyManager : MonoBehaviour {
     }
     
     // Coin going to UI.
-    public void CoinPoolToGo(int quantity, Vector3 currentPos, bool bRequireViewPort = true)
-    {
+    public void CoinPoolToGo(int quantity, Vector3 currentPos, bool bRequireViewPort = true) {
         CurrencyPool.I.CurrencyAllocation(quantity, CurrencyPool.PoolType.Gold, _toTheGoldUI, currentPos, null, bRequireViewPort);
     }
     
     // Dollar going to UI.
-    public void DollarPoolToGo(int quantity, Vector3 currentPos, bool bRequireViewPort = true)
-    {
+    public void DollarPoolToGo(int quantity, Vector3 currentPos, bool bRequireViewPort = true) {
         CurrencyPool.I.CurrencyAllocation(quantity, CurrencyPool.PoolType.Dollar, _toTheDollarUI,  currentPos, null, bRequireViewPort);
     }
     
     // Case going to UI.
-    public void CasePoolToGo(int quantity, Vector3 currentPos, bool bRequireViewPort = true)
-    {
+    public void CasePoolToGo(int quantity, Vector3 currentPos, bool bRequireViewPort = true) {
         CurrencyPool.I.CurrencyAllocation(quantity, CurrencyPool.PoolType.Case, _toTheCaseUI,  currentPos, null, bRequireViewPort);
     }
     
-    public void EarnGold(float quantity)
-    {
+    public void EarnGold(float quantity) {
         gold += quantity;
     }
     
-    public void EarnDollar(float quantity)
-    {
+    public void EarnDollar(float quantity) {
         dollar += quantity;
     }
 
@@ -65,13 +60,11 @@ public class CurrencyManager : MonoBehaviour {
         caseCount += quantity;
     }
     
-    public void LoseGold(float quantity)
-    {
+    public void LoseGold(float quantity) {
         gold -= quantity;
     }
     
-    public void LoseDollar(float quantity)
-    {
+    public void LoseDollar(float quantity) {
         dollar -= quantity;
     }
 
@@ -90,6 +83,4 @@ public class CurrencyManager : MonoBehaviour {
     public float GetCase() {
         return caseCount;
     }
-    
-    
 }
