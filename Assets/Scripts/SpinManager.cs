@@ -13,12 +13,12 @@ using UnityEngine.SceneManagement;
 public class SpinManager : MonoBehaviour {
     public MainObjects[] allMainObjects;
     public DetermineEveryZone _determineEveryZone;
-    
-    [SerializeField] private Button _wheelSpinButton;
-    [SerializeField] private Button _wheelSpinCloseTap;
-    [SerializeField] private Button _restartButton;
-    [SerializeField] private Button _reviveButton;
-    [SerializeField] private Button _spinToWin;
+    [Space(10)]
+    private Button _wheelSpinButton;
+    private Button _wheelSpinCloseTap;
+    private Button _restartButton;
+    private Button _reviveButton;
+    private Button _spinToWinButton;
     private float _aimNumberAsDegree = 0f;
     private float _wheelTime;
     private int selectedSection;
@@ -28,8 +28,12 @@ public class SpinManager : MonoBehaviour {
     private float totalWeights;
     private float PopUpTimer;
     private Dictionary<ObjectsType, MainObjects> TypeToProp = new Dictionary<ObjectsType, MainObjects>();
-    
-    
+
+    public Transform _wheelSpin;
+    public Transform _wheelSpinClose;
+    public Transform _restart;
+    public Transform _revive;
+    public Transform _spinToWin;
     public RectTransform _wheelMiddle;
     public Sprite _defaultBG;
     public Sprite _goldBG;
@@ -48,6 +52,29 @@ public class SpinManager : MonoBehaviour {
     public GameObject _dontHaveEnoughCoinUI;
 
     List<int> _objectCount = new List<int>();
+
+    private void OnValidate() {
+        if (_wheelSpinButton == null) {
+            _wheelSpinButton = _wheelSpin.GetComponent<Button>();
+        }
+
+        if (_wheelSpinCloseTap == null) {
+            _wheelSpinCloseTap = _wheelSpinClose.GetComponent<Button>();
+        }
+
+        if (_restartButton == null) {
+            _restartButton = _restart.GetComponent<Button>();
+        }
+
+        if (_reviveButton == null) {
+            _reviveButton = _revive.GetComponent<Button>();
+        }
+
+        if (_spinToWinButton == null) {
+            _spinToWinButton = _spinToWin.GetComponent<Button>();
+        }
+    }
+
     void Start()
     {
         for (int i = 0; i < allMainObjects.Length; i++) {
@@ -66,7 +93,7 @@ public class SpinManager : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         });
         
-        _spinToWin.onClick.AddListener(() => {
+        _spinToWinButton.onClick.AddListener(() => {
             _whellBG.transform.parent.gameObject.SetActive(true);
         });
         SetImagesForEveryZone();
@@ -119,12 +146,12 @@ public class SpinManager : MonoBehaviour {
         if (_whellBG.transform.parent.gameObject.activeSelf) _spinToWin.gameObject.SetActive(false);
         else _spinToWin.gameObject.SetActive(true);
         if (!bSpin) {
-            _wheelSpinButton.gameObject.SetActive(true);
-            _wheelSpinCloseTap.gameObject.SetActive(true);
+            _wheelSpin.gameObject.SetActive(true);
+            _wheelSpinClose.gameObject.SetActive(true);
         }
         else {
-            _wheelSpinButton.gameObject.SetActive(false);
-            _wheelSpinCloseTap.gameObject.SetActive(false);
+            _wheelSpin.gameObject.SetActive(false);
+            _wheelSpinClose.gameObject.SetActive(false);
         }
         _totalSpinCount.text = "Total Spin Count: " + wheelSpinCount;
         if (wheelSpinCount % 5 == 0 && wheelSpinCount % 30 != 0) {
@@ -161,38 +188,35 @@ public class SpinManager : MonoBehaviour {
         if (bSpin) {
             _wheelTime += Time.deltaTime * _aimNumberAsDegree / 4f;
             _wheelMiddle.eulerAngles = Vector3.forward * wheelAnimationCurve.Evaluate(_wheelTime);
-            if (_wheelTime >= _aimNumberAsDegree) {
+            if (_wheelTime >= _aimNumberAsDegree+100f) {
                 wheelSpinCount++;
                 bSpin = false;
                 _wheelTime = 0;
                 totalWeights = 0;
-                GetRewards(detectedObject[selectedSection].GetChild(0));
+                GetRewards(detectedObject[selectedSection].GetChild(0).GetComponent<RectTransform>());
                 _objectCount.Clear();
                 SetImagesForEveryZone();
             }
         }
     }
 
-    void GetRewards(Transform rewardTransform) {
+    
+    public void GetRewards(RectTransform rewardTransform) {
+        
+        
         ObjectsType type = Tools.StringToType(rewardTransform.name);
         int count = _objectCount[selectedSection];
-        if (type == ObjectsType.Coin) {
-            CurrencyManager.I.CoinPoolToGo(count, Camera.main.ScreenToWorldPoint(rewardTransform.position));
-        }
-
-        if (type == ObjectsType.Dollar) {
-            CurrencyManager.I.DollarPoolToGo(count, Camera.main.ScreenToWorldPoint(rewardTransform.position));
-        }
-
-        if (type == ObjectsType.Case) {
-            CurrencyManager.I.CasePoolToGo(count, Camera.main.ScreenToWorldPoint(rewardTransform.position));
-        }
-
+        if (type == ObjectsType.Coin) CurrencyManager.I.CoinPoolToGo(count, rewardTransform.position);
+        
+        if (type == ObjectsType.Dollar) CurrencyManager.I.DollarPoolToGo(count, rewardTransform.position);
+        
+        if (type == ObjectsType.Case) CurrencyManager.I.CasePoolToGo(count, rewardTransform.position);
+        
         if (type == ObjectsType.Bomb) {
             _whellBG.SetActive(false);
             _bombUI.SetActive(true);
             float reviveCost = (wheelSpinCount + 1) * reviveMultiplier;
-            _reviveButton.transform.GetChild(2).GetComponent<TMP_Text>().text = reviveCost.ToString();
+            _revive.transform.GetChild(2).GetComponent<TMP_Text>().text = reviveCost.ToString();
             bool bEnoughGold = CurrencyManager.I.GetGold() - reviveCost >= 0;
             _reviveButton.onClick.RemoveAllListeners();
             _reviveButton.onClick.AddListener(() => {

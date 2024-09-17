@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 67114729}
   - component: {fileID: 67114728}
   m_Layer: 5
-  m_Name: RewardCount (5)
+  m_Name: Spin_bg_middle_greenarea_count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -268,7 +268,7 @@ GameObject:
   m_Component:
   - component: {fileID: 74017264}
   m_Layer: 5
-  m_Name: PurpleArea_value
+  m_Name: Spin_bg_middle_purplearea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,14 +340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d24e22e8be7a2b4794884e752f35f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectsToAnim:
-    Transforms: []
-    StartScales: []
-    Times: []
-    Speeds: []
-    AnimTypes: 
-    animationCurvePoses: 
-    animationCurveScales: 
   curvesPos:
   - serializedVersion: 2
     m_Curve:
@@ -417,7 +409,7 @@ GameObject:
   - component: {fileID: 104320475}
   - component: {fileID: 104320474}
   m_Layer: 5
-  m_Name: RewardCount
+  m_Name: Spin_bg_middle_redarea_count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -550,7 +542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 132746069}
   m_Layer: 5
-  m_Name: RedArea_value
+  m_Name: Spin_bg_middle_redarea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -590,7 +582,7 @@ GameObject:
   - component: {fileID: 167098581}
   - component: {fileID: 167098580}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Dollar_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -636,7 +628,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: x50000
+  m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b4e327055d526fa4aa0d0b71687d04e1, type: 2}
   m_sharedMaterial: {fileID: -2351680688578498467, guid: b4e327055d526fa4aa0d0b71687d04e1, type: 2}
@@ -663,14 +655,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.9
+  m_fontSize: 43.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 12
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -725,7 +717,7 @@ GameObject:
   - component: {fileID: 220190316}
   - component: {fileID: 220190315}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: BombUI_bg_revivebutton_revivetext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -858,7 +850,7 @@ GameObject:
   m_Component:
   - component: {fileID: 221775099}
   m_Layer: 5
-  m_Name: Deactive
+  m_Name: UI_pool_dollar_deactive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -896,7 +888,7 @@ GameObject:
   m_Component:
   - component: {fileID: 226917455}
   m_Layer: 5
-  m_Name: BlueArea_value
+  m_Name: Spin_bg_middle_bluearea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -996,7 +988,7 @@ GameObject:
   - component: {fileID: 293628754}
   - component: {fileID: 293628753}
   m_Layer: 5
-  m_Name: DontHaveCoin
+  m_Name: DontHaveCoinPopUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1039,12 +1031,12 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 32c29c3767ff20a48a8d58f398906a41, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1073,7 +1065,7 @@ GameObject:
   - component: {fileID: 309107620}
   - component: {fileID: 309107619}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Spin_bg_middle_darkpurplearea_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1113,14 +1105,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 697426c4685d5434b991cc56ecb97145, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1149,7 +1141,7 @@ GameObject:
   - component: {fileID: 310286101}
   - component: {fileID: 310286100}
   m_Layer: 5
-  m_Name: WheelSpinCountText
+  m_Name: Spin_bg_wheelspincounttext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1334,7 +1326,7 @@ GameObject:
   - component: {fileID: 390867952}
   - component: {fileID: 390867951}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Gold_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1374,14 +1366,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 0d0a97ee9f5b41d47855519e535006a6, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1408,7 +1400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 452425796}
   m_Layer: 5
-  m_Name: Using
+  m_Name: UI_pool_case_using
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1446,7 +1438,7 @@ GameObject:
   - component: {fileID: 484309146}
   - component: {fileID: 484309145}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: BombUI_bg_text1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1579,7 +1571,7 @@ GameObject:
   m_Component:
   - component: {fileID: 494881655}
   m_Layer: 5
-  m_Name: Deactive
+  m_Name: UI_pool_case_deactive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1704,7 +1696,7 @@ GameObject:
   - component: {fileID: 525803161}
   - component: {fileID: 525803160}
   m_Layer: 5
-  m_Name: ContinueButton
+  m_Name: BombUI_bg_revivebutton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1805,12 +1797,12 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 845ffd648bf57814e98269fb277a3cf0, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1839,7 +1831,7 @@ GameObject:
   - component: {fileID: 529912632}
   - component: {fileID: 529912631}
   m_Layer: 5
-  m_Name: RewardCount (4)
+  m_Name: Spin_bg_middle_softbluearea_count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1972,7 +1964,7 @@ GameObject:
   m_Component:
   - component: {fileID: 553305847}
   m_Layer: 5
-  m_Name: Dollar
+  m_Name: UI_pool_dollar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2012,7 +2004,7 @@ GameObject:
   - component: {fileID: 596538771}
   - component: {fileID: 596538770}
   m_Layer: 5
-  m_Name: Image
+  m_Name: BombUI_bg_revivebutton_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2059,7 +2051,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 0d0a97ee9f5b41d47855519e535006a6, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2087,7 +2079,7 @@ GameObject:
   - component: {fileID: 614913457}
   - component: {fileID: 614913458}
   m_Layer: 5
-  m_Name: SpinWheel
+  m_Name: Spin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2134,7 +2126,7 @@ GameObject:
   - component: {fileID: 617768980}
   - component: {fileID: 617768979}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Spin_bg_middle_softbluearea_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2174,14 +2166,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 697426c4685d5434b991cc56ecb97145, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2210,7 +2202,7 @@ GameObject:
   - component: {fileID: 670086041}
   - component: {fileID: 670086040}
   m_Layer: 5
-  m_Name: BombBG
+  m_Name: BombUI_bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2256,14 +2248,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: d4e75c88ac492224d81000f5afe3b33f, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2292,7 +2284,7 @@ GameObject:
   - component: {fileID: 773356810}
   - component: {fileID: 773356809}
   m_Layer: 5
-  m_Name: RewardCount (7)
+  m_Name: Spin_bg_middle_orangearea_count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2427,7 +2419,7 @@ GameObject:
   - component: {fileID: 785217476}
   - component: {fileID: 785217475}
   m_Layer: 5
-  m_Name: Middle
+  m_Name: Spin_bg_middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2475,9 +2467,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2511,7 +2503,7 @@ GameObject:
   - component: {fileID: 833337535}
   - component: {fileID: 833337534}
   m_Layer: 5
-  m_Name: Image
+  m_Name: UI_pool_gold_deactive_currency
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2551,14 +2543,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 0d0a97ee9f5b41d47855519e535006a6, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2587,7 +2579,7 @@ GameObject:
   - component: {fileID: 853618849}
   - component: {fileID: 853618848}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: BombUI_bg_restartbutton_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2723,7 +2715,7 @@ GameObject:
   - component: {fileID: 856841660}
   - component: {fileID: 856841659}
   m_Layer: 5
-  m_Name: CloseTap
+  m_Name: Spin_bg_closetap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2809,7 +2801,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2843,7 +2835,7 @@ GameObject:
   - component: {fileID: 867773379}
   - component: {fileID: 867773378}
   m_Layer: 5
-  m_Name: RewardCount (2)
+  m_Name: Spin_bg_middle_purplearea_count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2978,7 +2970,7 @@ GameObject:
   - component: {fileID: 870000239}
   - component: {fileID: 870000238}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Gold_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3024,7 +3016,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: x50000
+  m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b4e327055d526fa4aa0d0b71687d04e1, type: 2}
   m_sharedMaterial: {fileID: -2351680688578498467, guid: b4e327055d526fa4aa0d0b71687d04e1, type: 2}
@@ -3051,14 +3043,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.9
+  m_fontSize: 43.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 12
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -3227,11 +3219,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 57e20506e62151b48a4c2c0937affdaa, type: 2}
   - {fileID: 11400000, guid: ce720ae67ec48c041aa46c2e86036dfd, type: 2}
   _determineEveryZone: {fileID: 11400000, guid: 8122c503d8561f942bded8515c837f64, type: 2}
-  _wheelSpinButton: {fileID: 924562127}
-  _wheelSpinCloseTap: {fileID: 856841659}
-  _restartButton: {fileID: 1100043149}
-  _reviveButton: {fileID: 525803160}
-  _spinToWin: {fileID: 1512692674}
+  _wheelSpin: {fileID: 924562126}
+  _wheelSpinClose: {fileID: 856841658}
+  _restart: {fileID: 1100043148}
+  _revive: {fileID: 525803159}
+  _spinToWin: {fileID: 1512692673}
   _wheelMiddle: {fileID: 785217474}
   _defaultBG: {fileID: 21300000, guid: 807c0c7e84c6fa144b99918b70f4d4de, type: 3}
   _goldBG: {fileID: 21300000, guid: 4e56edc75bfe8f145b18bd7c43af356e, type: 3}
@@ -3272,7 +3264,7 @@ GameObject:
   - component: {fileID: 923450490}
   - component: {fileID: 923450489}
   m_Layer: 5
-  m_Name: RewardCount (1)
+  m_Name: Spin_bg_middle_darkpurplearea_count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3408,7 +3400,7 @@ GameObject:
   - component: {fileID: 924562128}
   - component: {fileID: 924562127}
   m_Layer: 5
-  m_Name: SpinButton
+  m_Name: Spin_bg_spinbutton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3495,12 +3487,12 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 2c03729e75396d64b9418113f911b52c, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3529,7 +3521,7 @@ GameObject:
   - component: {fileID: 943264907}
   - component: {fileID: 943264906}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: UI_pool_case_deactive_currency
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3569,14 +3561,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 5925c10a7846f3a4dbca345c725e1272, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3603,7 +3595,7 @@ GameObject:
   m_Component:
   - component: {fileID: 970216550}
   m_Layer: 5
-  m_Name: Gold
+  m_Name: UI_pool_gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3643,7 +3635,7 @@ GameObject:
   - component: {fileID: 995457577}
   - component: {fileID: 995457576}
   m_Layer: 5
-  m_Name: Image
+  m_Name: UI_pool_case_deactive_currency
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3683,14 +3675,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 5925c10a7846f3a4dbca345c725e1272, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3719,7 +3711,7 @@ GameObject:
   - component: {fileID: 1003606091}
   - component: {fileID: 1003606090}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Case_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3759,14 +3751,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 5925c10a7846f3a4dbca345c725e1272, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3793,7 +3785,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1022037499}
   m_Layer: 5
-  m_Name: Case
+  m_Name: UI_pool_case
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3831,7 +3823,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1048524726}
   m_Layer: 5
-  m_Name: OrangeArea_value
+  m_Name: Spin_bg_middle_orangearea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3871,7 +3863,7 @@ GameObject:
   - component: {fileID: 1070444695}
   - component: {fileID: 1070444694}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: UI_pool_dollar_deactive_currency
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3911,14 +3903,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 697426c4685d5434b991cc56ecb97145, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3948,7 +3940,7 @@ GameObject:
   - component: {fileID: 1100043150}
   - component: {fileID: 1100043149}
   m_Layer: 5
-  m_Name: RestartButton
+  m_Name: BombUI_bg_restartbutton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4047,12 +4039,12 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 01bf92d49b3c7d34eab9d54f69976158, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4119,7 +4111,7 @@ GameObject:
   - component: {fileID: 1160293598}
   - component: {fileID: 1160293597}
   m_Layer: 5
-  m_Name: WheelTitle
+  m_Name: Spin_bg_wheeltitletext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4252,7 +4244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1200620810}
   m_Layer: 5
-  m_Name: Deactive
+  m_Name: UI_pool_gold_deactive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4292,7 +4284,7 @@ GameObject:
   - component: {fileID: 1207354344}
   - component: {fileID: 1207354343}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Spin_bg_middle_orangearea_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4332,14 +4324,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 697426c4685d5434b991cc56ecb97145, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4368,7 +4360,7 @@ GameObject:
   - component: {fileID: 1209750573}
   - component: {fileID: 1209750572}
   m_Layer: 5
-  m_Name: BG
+  m_Name: Spin_bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4414,9 +4406,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4450,7 +4442,7 @@ GameObject:
   - component: {fileID: 1235810246}
   - component: {fileID: 1235810245}
   m_Layer: 5
-  m_Name: Image
+  m_Name: UI_pool_dollar_deactive_currency
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4490,14 +4482,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 697426c4685d5434b991cc56ecb97145, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4526,7 +4518,7 @@ GameObject:
   - component: {fileID: 1275511741}
   - component: {fileID: 1275511742}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: 'Case_text '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4580,7 +4572,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: x50000
+  m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b4e327055d526fa4aa0d0b71687d04e1, type: 2}
   m_sharedMaterial: {fileID: -2351680688578498467, guid: b4e327055d526fa4aa0d0b71687d04e1, type: 2}
@@ -4607,14 +4599,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.9
+  m_fontSize: 43.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 12
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -4661,7 +4653,7 @@ GameObject:
   - component: {fileID: 1299284023}
   - component: {fileID: 1299284022}
   m_Layer: 5
-  m_Name: RewardCount (6)
+  m_Name: Spin_bg_middle_yellowarea_count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4796,7 +4788,7 @@ GameObject:
   - component: {fileID: 1335238697}
   - component: {fileID: 1335238696}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Dollar_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4836,14 +4828,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 697426c4685d5434b991cc56ecb97145, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4872,7 +4864,7 @@ GameObject:
   - component: {fileID: 1365765042}
   - component: {fileID: 1365765041}
   m_Layer: 5
-  m_Name: Arrow
+  m_Name: Spin_bg_arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4912,14 +4904,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 617cb5fbf7da5444baf340981dfac3cf, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4948,7 +4940,7 @@ GameObject:
   - component: {fileID: 1384089603}
   - component: {fileID: 1384089602}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: DontHaveCoinPopUp_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5081,7 +5073,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1407318818}
   m_Layer: 5
-  m_Name: YellowArea_value
+  m_Name: Spin_bg_middle_yellowarea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5121,7 +5113,7 @@ GameObject:
   - component: {fileID: 1411051202}
   - component: {fileID: 1411051201}
   m_Layer: 5
-  m_Name: Blur
+  m_Name: BombUI_blur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5161,14 +5153,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: b288de98d2dfab548aecccd4a50f4c48, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5195,7 +5187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1431241752}
   m_Layer: 5
-  m_Name: Using
+  m_Name: UI_pool_dollar_using
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5231,7 +5223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1435864243}
   m_Layer: 5
-  m_Name: GreenArea_value
+  m_Name: Spin_bg_middle_greenarea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5271,7 +5263,7 @@ GameObject:
   - component: {fileID: 1474828070}
   - component: {fileID: 1474828069}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: BombUI_bg_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5407,7 +5399,7 @@ GameObject:
   - component: {fileID: 1512692675}
   - component: {fileID: 1512692674}
   m_Layer: 5
-  m_Name: SpinToWin
+  m_Name: SpinToWinButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5493,12 +5485,12 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 5d464241ed9102043902da57b12bf88f, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5527,7 +5519,7 @@ GameObject:
   - component: {fileID: 1527602154}
   - component: {fileID: 1527602153}
   m_Layer: 5
-  m_Name: Reward
+  m_Name: Spin_bg_middle_redarea_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5567,14 +5559,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 697426c4685d5434b991cc56ecb97145, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5709,7 +5701,7 @@ GameObject:
   - component: {fileID: 1647371508}
   - component: {fileID: 1647371507}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Spin_bg_middle_yellowarea_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5732,7 +5724,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -33, y: 3}
+  m_AnchoredPosition: {x: -33, y: -7.6}
   m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1647371507
@@ -5749,14 +5741,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 697426c4685d5434b991cc56ecb97145, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5785,7 +5777,7 @@ GameObject:
   - component: {fileID: 1736032410}
   - component: {fileID: 1736032409}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Spin_bg_middle_purplearea_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5825,14 +5817,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 697426c4685d5434b991cc56ecb97145, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5859,7 +5851,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1768085158}
   m_Layer: 5
-  m_Name: DarkPurpleArea_value
+  m_Name: Spin_bg_middle_darkpurplearea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5937,7 +5929,7 @@ GameObject:
   - component: {fileID: 1776135818}
   - component: {fileID: 1776135817}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: BombUI_bg_revivebutton_counttext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6072,7 +6064,7 @@ GameObject:
   - component: {fileID: 1800399260}
   - component: {fileID: 1800399259}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Spin_bg_middle_greenarea_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6112,14 +6104,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 697426c4685d5434b991cc56ecb97145, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -6146,7 +6138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1807436662}
   m_Layer: 5
-  m_Name: SoftBlueArea_value
+  m_Name: Spin_bg_middle_softbluearea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6186,7 +6178,7 @@ GameObject:
   - component: {fileID: 1823914115}
   - component: {fileID: 1823914114}
   m_Layer: 5
-  m_Name: Image
+  m_Name: BombUI_bg_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6226,14 +6218,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: e1d7fcfd18a5087479dfa884eb822fec, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -6262,7 +6254,7 @@ GameObject:
   - component: {fileID: 1870738983}
   - component: {fileID: 1870738982}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Spin_bg_spinbutton_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6397,7 +6389,7 @@ GameObject:
   - component: {fileID: 1915636563}
   - component: {fileID: 1915636562}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Spin_bg_middle_bluearea_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6437,14 +6429,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 697426c4685d5434b991cc56ecb97145, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -6471,7 +6463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1918999406}
   m_Layer: 5
-  m_Name: Using
+  m_Name: UI_pool_gold_using
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6509,7 +6501,7 @@ GameObject:
   - component: {fileID: 1921545608}
   - component: {fileID: 1921545607}
   m_Layer: 5
-  m_Name: RewardCount (3)
+  m_Name: Spin_bg_middle_bluearea_count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6682,7 +6674,7 @@ GameObject:
   - component: {fileID: 2096725008}
   - component: {fileID: 2096725007}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: UI_pool_gold_deactive_currency
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6722,14 +6714,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 0d0a97ee9f5b41d47855519e535006a6, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

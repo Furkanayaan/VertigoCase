@@ -35,17 +35,17 @@ public class CurrencyManager : MonoBehaviour {
     
     // Coin going to UI.
     public void CoinPoolToGo(int quantity, Vector3 currentPos, bool bRequireViewPort = true) {
-        CurrencyPool.I.CurrencyAllocation(quantity, CurrencyPool.PoolType.Gold, _toTheGoldUI, currentPos, null, bRequireViewPort);
+        CurrencyPool.I.CurrencyAllocation(quantity, CurrencyPool.PoolType.Gold, _toTheGoldUI, currentPos);
     }
     
     // Dollar going to UI.
     public void DollarPoolToGo(int quantity, Vector3 currentPos, bool bRequireViewPort = true) {
-        CurrencyPool.I.CurrencyAllocation(quantity, CurrencyPool.PoolType.Dollar, _toTheDollarUI,  currentPos, null, bRequireViewPort);
+        CurrencyPool.I.CurrencyAllocation(quantity, CurrencyPool.PoolType.Dollar, _toTheDollarUI,  currentPos);
     }
     
     // Case going to UI.
     public void CasePoolToGo(int quantity, Vector3 currentPos, bool bRequireViewPort = true) {
-        CurrencyPool.I.CurrencyAllocation(quantity, CurrencyPool.PoolType.Case, _toTheCaseUI,  currentPos, null, bRequireViewPort);
+        CurrencyPool.I.CurrencyAllocation(quantity, CurrencyPool.PoolType.Case, _toTheCaseUI,  currentPos);
     }
     
     public void EarnGold(float quantity) {

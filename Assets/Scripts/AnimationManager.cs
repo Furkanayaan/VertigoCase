@@ -131,7 +131,7 @@ public class AnimationManager : MonoBehaviour
         }
     }
     
-    public SObjectsToAnim ObjectsToAnim = new(0);
+    internal SObjectsToAnim ObjectsToAnim = new(0);
 
     [SerializeField] private AnimationCurve[] curvesPos;
     [SerializeField] private AnimationCurve[] curvesScale;

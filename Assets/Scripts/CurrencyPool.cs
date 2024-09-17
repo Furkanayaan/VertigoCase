@@ -50,7 +50,7 @@ public class CurrencyPool : MonoBehaviour
         pool.SetPool(ref _pools);
     }
     
-    public void CurrencyAllocation(int count, PoolType type, Transform targetParent, Vector3 currentPos, Action endAction = null, bool bRequireViewPort = true) {
+    public void CurrencyAllocation(int count, PoolType type, Transform targetParent, Vector3 currentPos, Action endAction = null) {
         if (count == 0) return;
         int totalObj = 0;
         if (count <= 50) totalObj = count;
@@ -85,18 +85,19 @@ public class CurrencyPool : MonoBehaviour
                 if (type == PoolType.Gold) CurrencyManager.I.EarnGold(1);
                 if (type == PoolType.Dollar) CurrencyManager.I.EarnDollar(1);
                 if(type == PoolType.Case) CurrencyManager.I.EarnCase(1);
-                targetParent.DOScale(new Vector3(1.5f,1.5f,1.5f), 0.2f).OnComplete(() => {
-                    targetParent.DOScale(Vector3.one, 0.2f);
+                targetParent.DOScale(new Vector3(1.3f,1.3f,1.3f), 0.2f).OnComplete(() => {
+                    targetParent.DOScale(Vector3.one, 0.25f);
                 });
                 if (endAction != null) endAction();
             };
-
-            Vector2 viewport = bRequireViewPort ? Camera.main.WorldToViewportPoint(currentPos) : currentPos;
+            Vector3 pos0 = currentPos;
+            Vector3 pos1 = new Vector3(Screen.currentResolution.width / 2f, Screen.currentResolution.height / 2f, 0f);
+            Vector3 pos2 = targetParent.position;
         
-            List<Vector3> poses = new List<Vector3>() {
-                new Vector2(viewport.x * Screen.currentResolution.width, viewport.y * Screen.currentResolution.height),
-                    new Vector3(Screen.currentResolution.width / 2f, Screen.currentResolution.height / 2f, 0f),
-                    targetParent.position
+            List<Vector3> poses = new List<Vector3>() { 
+                pos0,
+                pos1,
+                pos2
             };
 
             AnimationManager.Type animationType = AnimationManager.Type.QuadraticThree;
@@ -120,5 +121,9 @@ public class CurrencyPool : MonoBehaviour
 	
     public Dictionary<Transform,PoolType> GetUITypes() {
         return _uiTypes;
+    }
+
+    private void OnValidate() {
+        
     }
 }
