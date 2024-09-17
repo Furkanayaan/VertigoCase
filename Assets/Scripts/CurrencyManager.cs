@@ -9,14 +9,17 @@ public class CurrencyManager : MonoBehaviour {
     private float gold;
     private float dollar;
     private float caseCount;
+    private float specialGiftCount;
 
     public TMP_Text _goldText;
     public TMP_Text _dollarText;
     public TMP_Text _caseText;
+    public TMP_Text _specialGiftText;
 
     public RectTransform _toTheGoldUI;
     public RectTransform _toTheDollarUI;
     public RectTransform _toTheCaseUI;
+    public RectTransform _toTheSpecialGiftUI;
 
     private void Start() {
         I = this;
@@ -31,21 +34,27 @@ public class CurrencyManager : MonoBehaviour {
         _goldText.text = "x" + gold;
         _dollarText.text = "x" + dollar;
         _caseText.text = "x" + caseCount;
+        _specialGiftText.text = "x" + specialGiftCount;
     }
     
     // Coin going to UI.
-    public void CoinPoolToGo(int quantity, Vector3 currentPos, bool bRequireViewPort = true) {
+    public void CoinPoolToGo(int quantity, Vector3 currentPos) {
         CurrencyPool.I.CurrencyAllocation(quantity, CurrencyPool.PoolType.Gold, _toTheGoldUI, currentPos);
     }
     
     // Dollar going to UI.
-    public void DollarPoolToGo(int quantity, Vector3 currentPos, bool bRequireViewPort = true) {
+    public void DollarPoolToGo(int quantity, Vector3 currentPos) {
         CurrencyPool.I.CurrencyAllocation(quantity, CurrencyPool.PoolType.Dollar, _toTheDollarUI,  currentPos);
     }
     
     // Case going to UI.
-    public void CasePoolToGo(int quantity, Vector3 currentPos, bool bRequireViewPort = true) {
+    public void CasePoolToGo(int quantity, Vector3 currentPos) {
         CurrencyPool.I.CurrencyAllocation(quantity, CurrencyPool.PoolType.Case, _toTheCaseUI,  currentPos);
+    }
+    
+    // SpecialGift going to UI.
+    public void SpecialGiftPoolToGo(int quantity, Vector3 currentPos) {
+        CurrencyPool.I.CurrencyAllocation(quantity, CurrencyPool.PoolType.SpecialGift, _toTheCaseUI,  currentPos);
     }
     
     public void EarnGold(float quantity) {
@@ -58,6 +67,10 @@ public class CurrencyManager : MonoBehaviour {
 
     public void EarnCase(float quantity) {
         caseCount += quantity;
+    }
+
+    public void EarnSpecialGift(float quantity) {
+        specialGiftCount += quantity;
     }
     
     public void LoseGold(float quantity) {
@@ -72,6 +85,10 @@ public class CurrencyManager : MonoBehaviour {
         caseCount -= quantity;
     }
 
+    public void LoseSpecialGift(float quantity) {
+        specialGiftCount -= quantity;
+    }
+
     public float GetGold() {
         return gold;
     }
@@ -82,5 +99,9 @@ public class CurrencyManager : MonoBehaviour {
 
     public float GetCase() {
         return caseCount;
+    }
+
+    public float GetSpecialGift() {
+        return specialGiftCount;
     }
 }

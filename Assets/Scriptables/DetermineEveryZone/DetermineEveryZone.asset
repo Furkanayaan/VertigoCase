@@ -151,39 +151,6 @@ MonoBehaviour:
       _countOfObject: 250
       _mainObject: {fileID: 11400000, guid: 57e20506e62151b48a4c2c0937affdaa, type: 2}
     - _levelOfObject: 0
-      _weightOfObject: 25
-      _countOfObject: 100
-      _mainObject: {fileID: 11400000, guid: ce720ae67ec48c041aa46c2e86036dfd, type: 2}
-    - _levelOfObject: 0
-      _weightOfObject: 10
-      _countOfObject: 1
-      _mainObject: {fileID: 11400000, guid: ea0859c6f11107f4fb493eb2162e598b, type: 2}
-    - _levelOfObject: 0
-      _weightOfObject: 5
-      _countOfObject: 500
-      _mainObject: {fileID: 11400000, guid: 57e20506e62151b48a4c2c0937affdaa, type: 2}
-    - _levelOfObject: 0
-      _weightOfObject: 10
-      _countOfObject: 200
-      _mainObject: {fileID: 11400000, guid: ce720ae67ec48c041aa46c2e86036dfd, type: 2}
-    - _levelOfObject: 0
-      _weightOfObject: 5
-      _countOfObject: 1
-      _mainObject: {fileID: 11400000, guid: d3df0cc4e7029ab449d3730d3669038e, type: 2}
-    - _levelOfObject: 0
-      _weightOfObject: 30
-      _countOfObject: 50
-      _mainObject: {fileID: 11400000, guid: ce720ae67ec48c041aa46c2e86036dfd, type: 2}
-    - _levelOfObject: 0
-      _weightOfObject: 10
-      _countOfObject: 1
-      _mainObject: {fileID: 11400000, guid: ea0859c6f11107f4fb493eb2162e598b, type: 2}
-  - _sliceProps:
-    - _levelOfObject: 0
-      _weightOfObject: 20
-      _countOfObject: 250
-      _mainObject: {fileID: 11400000, guid: 57e20506e62151b48a4c2c0937affdaa, type: 2}
-    - _levelOfObject: 0
       _weightOfObject: 5
       _countOfObject: 100
       _mainObject: {fileID: 11400000, guid: ce720ae67ec48c041aa46c2e86036dfd, type: 2}
@@ -1025,9 +992,9 @@ MonoBehaviour:
       _countOfObject: 200
       _mainObject: {fileID: 11400000, guid: ce720ae67ec48c041aa46c2e86036dfd, type: 2}
     - _levelOfObject: 0
-      _weightOfObject: 5
-      _countOfObject: 900
-      _mainObject: {fileID: 11400000, guid: 57e20506e62151b48a4c2c0937affdaa, type: 2}
+      _weightOfObject: 50
+      _countOfObject: 1
+      _mainObject: {fileID: 11400000, guid: eebccb334b70ac24c9cbc266d13ac695, type: 2}
     - _levelOfObject: 0
       _weightOfObject: 30
       _countOfObject: 50

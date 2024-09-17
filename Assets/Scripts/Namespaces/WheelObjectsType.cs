@@ -8,6 +8,7 @@ namespace WheelObjectsType
         Coin,
         Dollar,
         Case,
-        Bomb
+        Bomb,
+        SpecialGift
     }
 }

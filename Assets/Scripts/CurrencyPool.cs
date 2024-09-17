@@ -15,6 +15,7 @@ public class CurrencyPool : MonoBehaviour
         Gold,
         Dollar,
         Case,
+        SpecialGift,
     }
     [Serializable]
     public class Pool {

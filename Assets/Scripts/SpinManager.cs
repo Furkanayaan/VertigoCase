@@ -117,9 +117,10 @@ public class SpinManager : MonoBehaviour {
 
     public void SetImagesForEveryZone() {
         int indexOfZone = wheelSpinCount;
-        if (indexOfZone > _determineEveryZone._zoneProps.Length) {
+        while (indexOfZone >= _determineEveryZone._zoneProps.Length) {
             indexOfZone -= _determineEveryZone._zoneProps.Length;
         }
+        Debug.Log(indexOfZone);
         for (int i = 0; i < detectedObject.Length; i++) {
             int objectLevel = _determineEveryZone._zoneProps[indexOfZone]._sliceProps[i]._levelOfObject;
             int objectCount = _determineEveryZone._zoneProps[indexOfZone]._sliceProps[i]._countOfObject;
@@ -154,18 +155,17 @@ public class SpinManager : MonoBehaviour {
             _wheelSpin.gameObject.SetActive(false);
             _wheelSpinClose.gameObject.SetActive(false);
         }
-        _totalSpinCount.text = "Total Spin Count: " + wheelSpinCount;
-        if (wheelSpinCount % 5 == 0 && wheelSpinCount % 30 != 0) {
-            _whellBG.GetComponent<Image>().sprite = _silverBG;
-            _wheelTitle.text = "SILVER SPIN";
-            _wheelTitle.color = new Color(0.75f, 0.75f, 0.75f, 1f);
-        }
-        else if (wheelSpinCount % 30 == 0 && wheelSpinCount != 0) {
+        _totalSpinCount.text = "Current Spin Index:  " + (wheelSpinCount + 1);
+        if (wheelSpinCount % 30 == 29) {
             _whellBG.GetComponent<Image>().sprite = _goldBG;
             _wheelTitle.text = "GOLDEN SPIN";
             _wheelTitle.color = new Color(1f, 0.75f, 0f, 1f);
         }
-
+        else if (wheelSpinCount % 5 == 4) {
+            _whellBG.GetComponent<Image>().sprite = _silverBG;
+            _wheelTitle.text = "SILVER SPIN";
+            _wheelTitle.color = new Color(0.75f, 0.75f, 0.75f, 1f);
+        }
         else {
             _whellBG.GetComponent<Image>().sprite = _defaultBG;
             _wheelTitle.text = "NORMAL SPIN";
@@ -212,6 +212,8 @@ public class SpinManager : MonoBehaviour {
         if (type == ObjectsType.Dollar) CurrencyManager.I.DollarPoolToGo(count, rewardTransform.position);
         
         if (type == ObjectsType.Case) CurrencyManager.I.CasePoolToGo(count, rewardTransform.position);
+        
+        if(type == ObjectsType.SpecialGift) CurrencyManager.I.SpecialGiftPoolToGo(count, rewardTransform.position);
         
         if (type == ObjectsType.Bomb) {
             _wheelBGParent.SetActive(false);
