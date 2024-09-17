@@ -14,11 +14,11 @@ public class SpinManager : MonoBehaviour {
     public MainObjects[] allMainObjects;
     public DetermineEveryZone _determineEveryZone;
     [Space(10)]
-    private Button _wheelSpinButton;
-    private Button _wheelSpinCloseTap;
-    private Button _restartButton;
-    private Button _reviveButton;
-    private Button _spinToWinButton;
+    [SerializeField]private Button _wheelSpinButton;
+    [SerializeField]private Button _wheelSpinCloseTap;
+    [SerializeField]private Button _restartButton;
+    [SerializeField]private Button _reviveButton;
+    [SerializeField]private Button _spinToWinButton;
     private float _aimNumberAsDegree = 0f;
     private float _wheelTime;
     private int selectedSection;
@@ -39,6 +39,7 @@ public class SpinManager : MonoBehaviour {
     public Sprite _goldBG;
     public Sprite _silverBG;
     public GameObject _whellBG;
+    public GameObject _wheelBGParent;
     public TMP_Text _wheelTitle;
     public TMP_Text _totalSpinCount;
     public float reviveMultiplier;
@@ -86,7 +87,7 @@ public class SpinManager : MonoBehaviour {
         });
         
         _wheelSpinCloseTap.onClick.AddListener(() => {
-            _whellBG.transform.parent.gameObject.SetActive(false);
+            _wheelBGParent.SetActive(false);
         });
         
         _restartButton.onClick.AddListener(() => {
@@ -94,7 +95,7 @@ public class SpinManager : MonoBehaviour {
         });
         
         _spinToWinButton.onClick.AddListener(() => {
-            _whellBG.transform.parent.gameObject.SetActive(true);
+            _wheelBGParent.SetActive(true);
         });
         SetImagesForEveryZone();
     }
@@ -213,7 +214,7 @@ public class SpinManager : MonoBehaviour {
         if (type == ObjectsType.Case) CurrencyManager.I.CasePoolToGo(count, rewardTransform.position);
         
         if (type == ObjectsType.Bomb) {
-            _whellBG.SetActive(false);
+            _wheelBGParent.SetActive(false);
             _bombUI.SetActive(true);
             float reviveCost = (wheelSpinCount + 1) * reviveMultiplier;
             _revive.transform.GetChild(2).GetComponent<TMP_Text>().text = reviveCost.ToString();
@@ -223,7 +224,7 @@ public class SpinManager : MonoBehaviour {
                 if (bEnoughGold) {
                     CurrencyManager.I.LoseGold(reviveCost);
                     _bombUI.SetActive(false);
-                    _whellBG.SetActive(true);
+                    _wheelBGParent.SetActive(true);
                 }
                 else _dontHaveEnoughCoinUI.SetActive(true);
             });

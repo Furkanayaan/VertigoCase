@@ -3219,6 +3219,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 57e20506e62151b48a4c2c0937affdaa, type: 2}
   - {fileID: 11400000, guid: ce720ae67ec48c041aa46c2e86036dfd, type: 2}
   _determineEveryZone: {fileID: 11400000, guid: 8122c503d8561f942bded8515c837f64, type: 2}
+  _wheelSpinButton: {fileID: 924562127}
+  _wheelSpinCloseTap: {fileID: 856841659}
+  _restartButton: {fileID: 1100043149}
+  _reviveButton: {fileID: 525803160}
+  _spinToWinButton: {fileID: 1512692674}
   _wheelSpin: {fileID: 924562126}
   _wheelSpinClose: {fileID: 856841658}
   _restart: {fileID: 1100043148}
@@ -3229,6 +3234,7 @@ MonoBehaviour:
   _goldBG: {fileID: 21300000, guid: 4e56edc75bfe8f145b18bd7c43af356e, type: 3}
   _silverBG: {fileID: 21300000, guid: 3954f3dc210b438438c7911274dcb2a4, type: 3}
   _whellBG: {fileID: 1209750570}
+  _wheelBGParent: {fileID: 614913456}
   _wheelTitle: {fileID: 1160293597}
   _totalSpinCount: {fileID: 310286100}
   reviveMultiplier: 5
@@ -5485,7 +5491,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
