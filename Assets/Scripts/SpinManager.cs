@@ -28,7 +28,6 @@ public class SpinManager : MonoBehaviour {
     private int wheelSpinCount;
     private float totalWeights;
     private float PopUpTimer;
-    private Dictionary<ObjectsType, MainObjects> TypeToProp = new Dictionary<ObjectsType, MainObjects>();
 
     public Transform _wheelSpin;
     public Transform _wheelSpinClose;
@@ -92,9 +91,6 @@ public class SpinManager : MonoBehaviour {
     }
 
     void Start() {
-        for (int i = 0; i < allMainObjects.Length; i++) {
-            TypeToProp.Add(allMainObjects[i]._objectType, allMainObjects[i]);
-        }
         
         _wheelSpinButton.onClick.AddListener(() => {
             SpinWheel();
@@ -125,6 +121,7 @@ public class SpinManager : MonoBehaviour {
 
     
     public void ControlPopUP() {
+        //Control of dont have enough coin ui
         if (!_dontHaveEnoughCoinUI.activeSelf) return;
         PopUpTimer += Time.deltaTime;
         if (PopUpTimer >= 1f) {
@@ -157,7 +154,9 @@ public class SpinManager : MonoBehaviour {
             weights[i] = objectWeight;
             if (i > 0) weights[i] = weights[i-1] + objectWeight;
             totalWeights += objectWeight;
+            //Get every possible rewards count
             _objectCount.Add(objectCount);
+            //Get every possible rewards level
             _levelCount.Add(objectLevel);
         }
     }
@@ -165,6 +164,7 @@ public class SpinManager : MonoBehaviour {
     void WheelController() {
         if (_wheelBGParent.activeSelf) _spinToWin.gameObject.SetActive(false);
         else _spinToWin.gameObject.SetActive(true);
+        //Control of Spin button and close button
         if (bSpin || AnimationManager.I.ObjectsToAnim.bAnimationPlay()) {
             _wheelSpin.gameObject.SetActive(false);
             _wheelSpinClose.gameObject.SetActive(false);
@@ -174,18 +174,21 @@ public class SpinManager : MonoBehaviour {
             _wheelSpinClose.gameObject.SetActive(true);
         }
         _totalSpinCount.text = "Current Spin Index:  " + (wheelSpinCount + 1);
+        //Set golden spin here
         if (wheelSpinCount % 30 == 29) {
             _wheelMiddle.GetComponent<Image>().sprite = _goldBG;
             _arrow.GetComponent<Image>().sprite = _goldArrow;
             _wheelTitle.text = "GOLDEN SPIN";
             _wheelTitle.color = new Color(0.88f, 0.7f, 0.32f, 1f);
         }
+        //Set silver spin here
         else if (wheelSpinCount % 5 == 4) {
             _wheelMiddle.GetComponent<Image>().sprite = _silverBG;
             _arrow.GetComponent<Image>().sprite = _silverArrow;
             _wheelTitle.text = "SILVER SPIN";
             _wheelTitle.color = new Color(0.5f, 0.5f, 0.5f, 1f);
         }
+        //Set bronze spin here
         else {
             _wheelMiddle.GetComponent<Image>().sprite = _defaultBG;
             _arrow.GetComponent<Image>().sprite = _defaultArrow;
@@ -201,8 +204,10 @@ public class SpinManager : MonoBehaviour {
         _aimNumberAsDegree = Mathf.RoundToInt(totalWheelSpin * 360f + 360f + CalculateAngle(selectedSection));
         wheelAnimationCurve = new AnimationCurve();
         wheelAnimationCurve.AddKey(0, 0);
+        //The animation value and duration are being calculated.
         wheelAnimationCurve.AddKey(_aimNumberAsDegree * Random.Range(60f, 80f) / 100f , _aimNumberAsDegree * Random.Range(80f, 101f) / 100f);
         wheelAnimationCurve.AddKey(_aimNumberAsDegree, _aimNumberAsDegree);
+        //The spin begin
         bSpin = true;
     }
     
@@ -224,9 +229,8 @@ public class SpinManager : MonoBehaviour {
     }
 
     
+    //Reward acquisitions and currency purchases are being made.
     public void GetRewards(RectTransform rewardTransform) {
-        
-        
         ObjectsType type = Tools.StringToType(rewardTransform.name);
         int count = _objectCount[selectedSection];
         int level = _levelCount[selectedSection];
@@ -239,6 +243,7 @@ public class SpinManager : MonoBehaviour {
         else if (type == ObjectsType.Grenade) {
             _wheelBGParent.SetActive(false);
             _bombUI.SetActive(true);
+            //Revive cost is being calculated
             float reviveCost = (wheelSpinCount + 1) * reviveMultiplier;
             _revive.transform.GetChild(2).GetComponent<TMP_Text>().text = reviveCost.ToString();
             bool bEnoughGold = CurrencyManager.I.GetGold() - reviveCost >= 0;
@@ -281,7 +286,7 @@ public class SpinManager : MonoBehaviour {
             AnimationManager.I.ObjectsToAnim.Add(props);
         }
     }
-    
+    ////Random numbers are returned according to the total weight. The object in the range of the generated number is selected.
     int GetRandomWeightedIndex() {
         float randomPoint = Random.Range(0, totalWeights);
         for (int i = 1; i < weights.Length; i++) {
@@ -292,6 +297,7 @@ public class SpinManager : MonoBehaviour {
         return 0;
     }
     
+    //Determine the rotation range according to the selected object
     float CalculateAngle(int sectionIndex) {
         float anglePerSection = 360f / detectedObject.Length;
         return 360f - (sectionIndex * anglePerSection);
