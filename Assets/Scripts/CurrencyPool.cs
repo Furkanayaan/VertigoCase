@@ -102,9 +102,10 @@ public class CurrencyPool : MonoBehaviour
             };
 
             AnimationManager.Type animationType = AnimationManager.Type.QuadraticThree;
-
+            AnimationManager.SObjectsToAnim sObjectsToAnim = new();
             AnimationManager.AnimationProperties props = new(target, animationType, poses, end, 0, 0, UnityEngine.Random.Range(0.6f, 0.8f));
-            AnimationManager.I.ObjectsToAnim.Add(props);
+            sObjectsToAnim.Add(props);
+            AnimationManager.I.ObjectsToAnim.Add(sObjectsToAnim);
         }
 
     }

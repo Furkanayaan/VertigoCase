@@ -165,7 +165,7 @@ public class SpinManager : MonoBehaviour {
         if (_wheelBGParent.activeSelf) _spinToWin.gameObject.SetActive(false);
         else _spinToWin.gameObject.SetActive(true);
         //Control of Spin button and close button
-        if (bSpin || AnimationManager.I.ObjectsToAnim.bAnimationPlay()) {
+        if (bSpin || AnimationManager.I.ObjectsToAnim.Count > 0) {
             _wheelSpin.gameObject.SetActive(false);
             _wheelSpinClose.gameObject.SetActive(false);
         }
@@ -260,7 +260,7 @@ public class SpinManager : MonoBehaviour {
 
         else {
             
-            AnimationManager.Type animationType = AnimationManager.Type.QuadraticFour;
+            AnimationManager.Type animationType = AnimationManager.Type.QuadraticThree;
             Vector3 currentPos = rewardTransform.position;
 
             GameObject cloneObj = Instantiate(rewardTransform.gameObject, currentPos, Quaternion.identity);
@@ -268,7 +268,6 @@ public class SpinManager : MonoBehaviour {
             cloneObj.transform.SetParent(_whellBG.transform);
             List<Vector3> poses = new List<Vector3>() {
                 currentPos,
-                new Vector3(0f, Screen.height),
                 new Vector3(0f, -Screen.height / 2f),
                 new Vector3(Screen.width / 2f, Screen.height / 2f, 0f),
             };
@@ -280,10 +279,11 @@ public class SpinManager : MonoBehaviour {
                 Destroy(_transform.gameObject);
                 bSpin = false;
             };
-
+            AnimationManager.SObjectsToAnim sObjectsToAnim = new();
             AnimationManager.AnimationProperties props = new(cloneObj.transform, animationType, poses, endAction, 0, 1,
                 speed);
-            AnimationManager.I.ObjectsToAnim.Add(props);
+            sObjectsToAnim.Add(props);
+            AnimationManager.I.ObjectsToAnim.Add(sObjectsToAnim);
         }
     }
     ////Random numbers are returned according to the total weight. The object in the range of the generated number is selected.

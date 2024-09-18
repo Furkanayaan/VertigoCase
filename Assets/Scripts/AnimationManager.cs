@@ -36,35 +36,35 @@ public class AnimationManager : MonoBehaviour
     }
     
     [Serializable]
-    public struct SObjectsToAnim {
+    public class SObjectsToAnim {
 
 
-        public List<Transform> Transforms;
+        public Transform Transforms;
 
-        public List<List<Vector3>> Posses; // length == 2; 0 start, 1 end +++++ length == 4; 0 start, 1 first middle , 2 second middle, 3 end
-        public List<Vector3> StartScales;
+        public List<Vector3> Posses; // length == 2; 0 start, 1 end +++++ length == 4; 0 start, 1 first middle , 2 second middle, 3 end
+        public Vector3 StartScales;
 
-        public List<float> Times;
-        public List<float> Speeds;
+        public float Times;
+        public float Speeds;
 
-        public List<Type> AnimTypes;
-        public List<int> animationCurvePoses;
-        public List<int> animationCurveScales;
+        public Type AnimTypes;
+        public int animationCurvePoses;
+        public int animationCurveScales;
 
-        public List<Action<Transform>> Actions;
+        public Action<Transform> Actions;
 
-        public SObjectsToAnim(int i) {
-            Transforms = new();
+        public SObjectsToAnim() {
+            Transforms = null;
             Posses = new();
             StartScales = new();
-            Times = new();
-            Speeds = new();
-            AnimTypes = new();
+            Times = 0;
+            Speeds = 0;
+            AnimTypes = Type.Linear;
 
-            animationCurvePoses = new();
-            animationCurveScales = new();
+            animationCurvePoses = 0;
+            animationCurveScales = 0;
 
-            Actions = new();
+            Actions = null;
         }
 
         public void Add(AnimationProperties animationProperties) {
@@ -72,70 +72,40 @@ public class AnimationManager : MonoBehaviour
                 return;
             }
 
-            Transforms.Add(animationProperties.TargetTransform);
-            Posses.Add(animationProperties.Posses);
-            StartScales.Add(animationProperties.TargetTransform.localScale);
-            Actions.Add(animationProperties.Action);
-            Speeds.Add(animationProperties.Speed);
+            Transforms = animationProperties.TargetTransform;
+            Posses = animationProperties.Posses;
+            StartScales = animationProperties.TargetTransform.localScale;
+            Actions = animationProperties.Action;
+            Speeds = animationProperties.Speed;
 
-            animationCurvePoses.Add(animationProperties.AnimCurvePos);
-            animationCurveScales.Add(animationProperties.AnimCurveScale);
-            AnimTypes.Add(animationProperties.AnimType);
+            animationCurvePoses = animationProperties.AnimCurvePos;
+            animationCurveScales = animationProperties.AnimCurveScale;
+            AnimTypes = animationProperties.AnimType;
 
-            Times.Add(animationProperties.Time);
+            Times = animationProperties.Time;
         }
         public void Remove(Transform targetTransform) {
-            int index = Transforms.IndexOf(targetTransform);
-            
-            if(index == -1) return;
-
             try {
-                if(Actions[index] != null) 
-                    Actions[index].Invoke(targetTransform);
+                if(Actions != null) 
+                    Actions.Invoke(targetTransform);
             }
             catch (System.Exception e) {
                 string error = e.ToString();
             }
                 
-            Transforms.RemoveAt(index);
-            Posses.RemoveAt(index);
-            StartScales.RemoveAt(index);
-            Times.RemoveAt(index);
-            Speeds.RemoveAt(index);
-            animationCurvePoses.RemoveAt(index);
-            animationCurveScales.RemoveAt(index);
-            AnimTypes.RemoveAt(index);
-            Actions.RemoveAt(index);
-        }
-        
-        public void RemoveAt(int index) {
-            if(index < 0) return;
-
-            try {
-                if(Actions[index] != null && Transforms[index] != null) 
-                    Actions[index].Invoke(Transforms[index]);
-            }
-            catch (System.Exception e) {
-                string error = e.ToString();
-            }
-                
-            Transforms.RemoveAt(index);
-            Posses.RemoveAt(index);
-            StartScales.RemoveAt(index);
-            Times.RemoveAt(index);
-            Speeds.RemoveAt(index);
-            animationCurvePoses.RemoveAt(index);
-            animationCurveScales.RemoveAt(index);
-            AnimTypes.RemoveAt(index);
-            Actions.RemoveAt(index);
-        }
-
-        public bool bAnimationPlay() {
-            return Transforms.Count > 0;
+            Transforms = null;
+            Posses = new List<Vector3>();
+            StartScales = new Vector3();
+            Times = 0;
+            Speeds = 0;
+            animationCurvePoses = 0;
+            animationCurveScales = 0;
+            AnimTypes = Type.Linear;
+            Actions = null;
         }
     }
     
-    internal SObjectsToAnim ObjectsToAnim = new(0);
+    public List<SObjectsToAnim> ObjectsToAnim = new List<SObjectsToAnim>();
 
     [SerializeField] private AnimationCurve[] curvesPos;
     [SerializeField] private AnimationCurve[] curvesScale;
@@ -150,35 +120,34 @@ public class AnimationManager : MonoBehaviour
 
 
     public void OneTimeAnimations() {
-        if(ObjectsToAnim.Transforms.Count == 0) return; 
-        
-        for (int i = ObjectsToAnim.Transforms.Count - 1; i >= 0; i--) {
-            if (ObjectsToAnim.Transforms[i] == null) {
+        for (int i = 0; i < ObjectsToAnim.Count; i++) {
+            if(ObjectsToAnim[i] == null || ObjectsToAnim[i].Transforms == null ) {
                 ObjectsToAnim.RemoveAt(i);
                 return;
             }
-            if(!ObjectsToAnim.Transforms[i].gameObject.activeSelf) continue;
+            if(!ObjectsToAnim[i].Transforms.gameObject.activeSelf) continue;
+            float evaluated = curvesPos[ObjectsToAnim[i].animationCurvePoses].Evaluate(ObjectsToAnim[i].Times);
+            float evaluatedScale = curvesScale[ObjectsToAnim[i].animationCurveScales].Evaluate(ObjectsToAnim[i].Times);
 
-            float evaluated = curvesPos[ObjectsToAnim.animationCurvePoses[i]].Evaluate(ObjectsToAnim.Times[i]);
-            float evaluatedScale = curvesScale[ObjectsToAnim.animationCurveScales[i]].Evaluate(ObjectsToAnim.Times[i]);
+            ObjectsToAnim[i].Transforms.position = PosReturner(i, evaluated);
+            ObjectsToAnim[i].Transforms.localScale = ObjectsToAnim[i].StartScales + Vector3.one * evaluatedScale;
 
-            ObjectsToAnim.Transforms[i].position = PosReturner(i, evaluated);
-            ObjectsToAnim.Transforms[i].localScale = ObjectsToAnim.StartScales[i] + Vector3.one * evaluatedScale;
+            ObjectsToAnim[i].Times += Time.smoothDeltaTime / ObjectsToAnim[i].Speeds;
+            if (ObjectsToAnim[i].Times > 1f) {
+                ObjectsToAnim[i].Transforms.position =
+                    PosReturner(i, curvesPos[ObjectsToAnim[i].animationCurvePoses].keys[^1].value);
 
-            ObjectsToAnim.Times[i] += Time.smoothDeltaTime / ObjectsToAnim.Speeds[i];
-            
-            if (ObjectsToAnim.Times[i] > 1.0f) {
-                ObjectsToAnim.Transforms[i].position = PosReturner(i, curvesPos[ObjectsToAnim.animationCurvePoses[i]].keys[^1].value);
-                ObjectsToAnim.Transforms[i].localScale = ObjectsToAnim.StartScales[i] + Vector3.one * curvesScale[ObjectsToAnim.animationCurveScales[i]].keys[^1].value;
-
-                ObjectsToAnim.Remove(ObjectsToAnim.Transforms[i]);
+                ObjectsToAnim[i].Transforms.localScale = 
+                    ObjectsToAnim[i].StartScales + Vector3.one * curvesScale[ObjectsToAnim[i].animationCurveScales].keys[^1].value;
+                ObjectsToAnim[i].Remove(ObjectsToAnim[i].Transforms);
+                ObjectsToAnim.RemoveAt(i);
             }
         }
     }
 
     
     public Vector3 PosReturner(int index, float time) {
-        switch (ObjectsToAnim.AnimTypes[index]) {
+        switch (ObjectsToAnim[index].AnimTypes) {
             default:
                 return new Vector3();
             case Type.Linear:
@@ -193,19 +162,19 @@ public class AnimationManager : MonoBehaviour
     }
 
     public Vector3 Linear(int index, float t) {
-        return ObjectsToAnim.Posses[index][0] + t * (ObjectsToAnim.Posses[index][1] - ObjectsToAnim.Posses[index][0]);
+        return ObjectsToAnim[index].Posses[0] + t * (ObjectsToAnim[index].Posses[1] - ObjectsToAnim[index].Posses[0]);
     }
     
     public Vector3 QuadraticThree(int index, float t) {
-        Vector3 p = (1f - t) * ((1 - t) * ObjectsToAnim.Posses[index][0] + t * ObjectsToAnim.Posses[index][1]) + t * ((1 - t) * ObjectsToAnim.Posses[index][1] + t * ObjectsToAnim.Posses[index][2]);
+        Vector3 p = (1f - t) * ((1 - t) * ObjectsToAnim[index].Posses[0] + t * ObjectsToAnim[index].Posses[1]) + t * ((1 - t) * ObjectsToAnim[index].Posses[1] + t * ObjectsToAnim[index].Posses[2]);
         return p;
     }
     
     public Vector3 QuadraticFour(int index, float t) {
-        Vector3 p = Mathf.Pow(1f - t, 3f) * ObjectsToAnim.Posses[index][0] + 
-                    3f * Mathf.Pow(1f - t, 2f) * t * ObjectsToAnim.Posses[index][1] + 
-                    3f * (1f - t) * t * t * ObjectsToAnim.Posses[index][2] + 
-                    Mathf.Pow(t, 3f) * ObjectsToAnim.Posses[index][3];
+        Vector3 p = Mathf.Pow(1f - t, 3f) * ObjectsToAnim[index].Posses[0] + 
+                    3f * Mathf.Pow(1f - t, 2f) * t * ObjectsToAnim[index].Posses[1] + 
+                    3f * (1f - t) * t * t * ObjectsToAnim[index].Posses[2] + 
+                    Mathf.Pow(t, 3f) * ObjectsToAnim[index].Posses[3];
         
         return p;
     }
