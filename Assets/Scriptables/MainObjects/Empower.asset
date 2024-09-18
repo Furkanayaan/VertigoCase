@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38055f29562f4b74faba1e1eb44ed56c, type: 3}
+  m_Name: Empower
+  m_EditorClassIdentifier: 
+  _objectType: 4
+  _objects:
+  - {fileID: 2517939709986018016, guid: 4f9b1e563c20cc94f9511bcb92988d4e, type: 3}
+  - {fileID: 6227547202145113016, guid: d00f7b32592a2454dbcedc05bc24ef4e, type: 3}
+  - {fileID: 6977495012033575180, guid: 89af8cd0ed2505143a0366b4d4efd3fd, type: 3}
+  - {fileID: 2415535795320782873, guid: 635bb4b94a0946e4496f32d32abb37b7, type: 3}
+  - {fileID: 4556485986250776696, guid: 46bd0a064d8342d43addb3bf5336c318, type: 3}
+  - {fileID: 1736204759698032942, guid: 9debc2aa6bc04b94c95eba8d0dbb9860, type: 3}
+  - {fileID: 8496624797234482129, guid: b5048b69368149e4c8088c64bffab122, type: 3}

@@ -19,6 +19,7 @@ public class SpinManager : MonoBehaviour {
     [SerializeField]private Button _restartButton;
     [SerializeField]private Button _reviveButton;
     [SerializeField]private Button _spinToWinButton;
+    [SerializeField] private Button _takeYourRewardButton;
     private float _aimNumberAsDegree = 0f;
     private float _wheelTime;
     private int selectedSection;
@@ -36,13 +37,22 @@ public class SpinManager : MonoBehaviour {
     public Transform _spinToWin;
     public RectTransform _wheelMiddle;
     public Sprite _defaultBG;
+    public Sprite _defaultArrow;
     public Sprite _goldBG;
+    public Sprite _goldArrow;
     public Sprite _silverBG;
+    public Sprite _silverArrow;
     public GameObject _whellBG;
+    public GameObject _arrow;
     public GameObject _wheelBGParent;
     public TMP_Text _wheelTitle;
     public TMP_Text _totalSpinCount;
     public float reviveMultiplier;
+    public GameObject _gainRewards;
+    public Transform _rewardSprite;
+    public Transform _takeYourReward;
+    
+    
     
     
     
@@ -53,6 +63,7 @@ public class SpinManager : MonoBehaviour {
     public GameObject _dontHaveEnoughCoinUI;
 
     List<int> _objectCount = new List<int>();
+    private List<int> _levelCount = new List<int>();
 
     private void OnValidate() {
         if (_wheelSpinButton == null) {
@@ -73,6 +84,10 @@ public class SpinManager : MonoBehaviour {
 
         if (_spinToWinButton == null) {
             _spinToWinButton = _spinToWin.GetComponent<Button>();
+        }
+
+        if (_takeYourRewardButton == null) {
+            _takeYourRewardButton = _takeYourReward.GetComponent<Button>();
         }
     }
 
@@ -96,6 +111,10 @@ public class SpinManager : MonoBehaviour {
         
         _spinToWinButton.onClick.AddListener(() => {
             _wheelBGParent.SetActive(true);
+        });
+        
+        _takeYourRewardButton.onClick.AddListener(() => {
+            _gainRewards.gameObject.SetActive(false);
         });
         SetImagesForEveryZone();
     }
@@ -140,11 +159,12 @@ public class SpinManager : MonoBehaviour {
             if (i > 0) weights[i] = weights[i-1] + objectWeight;
             totalWeights += objectWeight;
             _objectCount.Add(objectCount);
+            _levelCount.Add(objectLevel);
         }
     }
 
     void WheelController() {
-        if (_whellBG.transform.parent.gameObject.activeSelf) _spinToWin.gameObject.SetActive(false);
+        if (_wheelBGParent.activeSelf) _spinToWin.gameObject.SetActive(false);
         else _spinToWin.gameObject.SetActive(true);
         if (!bSpin) {
             _wheelSpin.gameObject.SetActive(true);
@@ -156,19 +176,22 @@ public class SpinManager : MonoBehaviour {
         }
         _totalSpinCount.text = "Current Spin Index:  " + (wheelSpinCount + 1);
         if (wheelSpinCount % 30 == 29) {
-            _whellBG.GetComponent<Image>().sprite = _goldBG;
+            _wheelMiddle.GetComponent<Image>().sprite = _goldBG;
+            _arrow.GetComponent<Image>().sprite = _goldArrow;
             _wheelTitle.text = "GOLDEN SPIN";
-            _wheelTitle.color = new Color(1f, 0.75f, 0f, 1f);
+            _wheelTitle.color = new Color(0.88f, 0.7f, 0.32f, 1f);
         }
         else if (wheelSpinCount % 5 == 4) {
-            _whellBG.GetComponent<Image>().sprite = _silverBG;
+            _wheelMiddle.GetComponent<Image>().sprite = _silverBG;
+            _arrow.GetComponent<Image>().sprite = _silverArrow;
             _wheelTitle.text = "SILVER SPIN";
-            _wheelTitle.color = new Color(0.75f, 0.75f, 0.75f, 1f);
+            _wheelTitle.color = new Color(0.5f, 0.5f, 0.5f, 1f);
         }
         else {
-            _whellBG.GetComponent<Image>().sprite = _defaultBG;
-            _wheelTitle.text = "NORMAL SPIN";
-            _wheelTitle.color = new Color(0.75f, 0.25f, 0.75f, 1f);
+            _wheelMiddle.GetComponent<Image>().sprite = _defaultBG;
+            _arrow.GetComponent<Image>().sprite = _defaultArrow;
+            _wheelTitle.text = "BRONZE SPIN";
+            _wheelTitle.color = new Color(0.58f, 0.34f, 0.11f, 1f);
         }
     }
     
@@ -195,6 +218,7 @@ public class SpinManager : MonoBehaviour {
                 totalWeights = 0;
                 GetRewards(detectedObject[selectedSection].GetChild(0).GetComponent<RectTransform>());
                 _objectCount.Clear();
+                _levelCount.Clear();
                 SetImagesForEveryZone();
             }
         }
@@ -206,15 +230,14 @@ public class SpinManager : MonoBehaviour {
         
         ObjectsType type = Tools.StringToType(rewardTransform.name);
         int count = _objectCount[selectedSection];
-        if (type == ObjectsType.Coin) CurrencyManager.I.CoinPoolToGo(count, rewardTransform.position);
+        int level = _levelCount[selectedSection];
+        if (type == ObjectsType.Coin) CurrencyManager.I.CoinPoolToGo(count, rewardTransform.position, 0);
         
-        if (type == ObjectsType.Dollar) CurrencyManager.I.DollarPoolToGo(count, rewardTransform.position);
+        else if (type == ObjectsType.Dollar) CurrencyManager.I.DollarPoolToGo(count, rewardTransform.position);
         
-        if (type == ObjectsType.Case) CurrencyManager.I.CasePoolToGo(count, rewardTransform.position);
+        else if (type == ObjectsType.Case) CurrencyManager.I.CasePoolToGo(count, rewardTransform.position, level);
         
-        if(type == ObjectsType.SpecialGift) CurrencyManager.I.SpecialGiftPoolToGo(count, rewardTransform.position);
-        
-        if (type == ObjectsType.Bomb) {
+        else if (type == ObjectsType.Grenade) {
             _wheelBGParent.SetActive(false);
             _bombUI.SetActive(true);
             float reviveCost = (wheelSpinCount + 1) * reviveMultiplier;
@@ -229,6 +252,32 @@ public class SpinManager : MonoBehaviour {
                 }
                 else _dontHaveEnoughCoinUI.SetActive(true);
             });
+        }
+
+        else {
+            AnimationManager.Type animationType = AnimationManager.Type.QuadraticFour;
+            Vector3 currentPos = rewardTransform.position;
+
+            GameObject cloneObj = Instantiate(rewardTransform.gameObject, currentPos, Quaternion.identity);
+            cloneObj.name = cloneObj.GetComponent<Image>().name;
+            cloneObj.transform.SetParent(_whellBG.transform);
+            List<Vector3> poses = new List<Vector3>() {
+                currentPos,
+                new Vector3(0f, Screen.height),
+                new Vector3(0f, -Screen.height / 2f),
+                new Vector3(Screen.width / 2f, Screen.height / 2f, 0f),
+            };
+            float speed = 1f;
+
+            Action<Transform> endAction = (_transform) => {
+                _gainRewards.SetActive(true);
+                _rewardSprite.GetComponent<Image>().sprite = _transform.GetComponent<Image>().sprite;
+                Destroy(_transform.gameObject);
+            };
+
+            AnimationManager.AnimationProperties props = new(cloneObj.transform, animationType, poses, endAction, 0, 0,
+                speed);
+            AnimationManager.I.ObjectsToAnim.Add(props);
         }
     }
     

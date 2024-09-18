@@ -8,7 +8,16 @@ namespace WheelObjectsType
         Coin,
         Dollar,
         Case,
-        Bomb,
-        SpecialGift
+        Grenade,
+        Empower,
+        Glasses,
+        Hat,
+        Knife,
+        Molotov,
+        Heal,
+        Burn,
+        Operator,
+        Rifle,
+        Shotgun,
     }
 }

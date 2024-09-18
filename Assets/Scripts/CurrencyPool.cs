@@ -14,8 +14,7 @@ public class CurrencyPool : MonoBehaviour
      public enum PoolType {
         Gold,
         Dollar,
-        Case,
-        SpecialGift,
+        Case
     }
     [Serializable]
     public class Pool {
@@ -25,7 +24,7 @@ public class CurrencyPool : MonoBehaviour
         public Transform[] Deactives;
         public Transform[] Actives;
 
-        public void SetPool(ref Dictionary<PoolType, int> parentDic) {
+        public void SetPool(ref Dictionary<PoolType, List<int>> parentDic) {
             Array.Resize(ref Actives, Parent.Length);
             Array.Resize(ref Deactives, Parent.Length);
 
@@ -34,16 +33,17 @@ public class CurrencyPool : MonoBehaviour
                 Actives[i] = Parent[i].transform.GetChild(1);
 
                 Parent[i].transform.GetChild(0).gameObject.SetActive(false);
-
-                parentDic.Add(PoolType[i], i);
+                if (!parentDic.ContainsKey(PoolType[i])) {
+                    parentDic.Add(PoolType[i], new List<int>());
+                }
+                parentDic[PoolType[i]].Add(i);
             }
         }
     } public Pool pool = new();
 	
     public static CurrencyPool I;
     
-    private Dictionary<PoolType, int> _pools = new ();
-    private Dictionary<Transform, PoolType> _uiTypes = new ();
+    private Dictionary<PoolType, List<int>> _pools = new ();
 	
 
     private void Start() {
@@ -51,7 +51,7 @@ public class CurrencyPool : MonoBehaviour
         pool.SetPool(ref _pools);
     }
     
-    public void CurrencyAllocation(int count, PoolType type, Transform targetParent, Vector3 currentPos, Action endAction = null) {
+    public void CurrencyAllocation(int count, PoolType type, Transform targetParent, Vector3 currentPos, Action endAction = null, int parentIndex = 0) {
         if (count == 0) return;
         int totalObj = 0;
         if (count <= 50) totalObj = count;
@@ -60,34 +60,32 @@ public class CurrencyPool : MonoBehaviour
             int remain = count - totalObj;
             if (type == PoolType.Gold) CurrencyManager.I.EarnGold(remain);
             if (type == PoolType.Dollar) CurrencyManager.I.EarnDollar(remain);
-            if(type == PoolType.Case) CurrencyManager.I.EarnCase(remain);
-            if(type == PoolType.SpecialGift) CurrencyManager.I.EarnSpecialGift(remain);
+            if(type == PoolType.Case) CurrencyManager.I.EarnCase(remain, parentIndex);
         }
 
         for (int i = 0; i < totalObj; i++) {
             // check object pool, if there is enough object
-            if(GetDeactivePool(type).childCount == 1) {
-                string parentName = GetDeactivePool(type).GetChild(0).name;
-                Transform instantiated = Instantiate(GetDeactivePool(type).GetChild(0));
-                instantiated.transform.SetParent(GetDeactivePool(type));
+            if(GetDeactivePool(type, parentIndex).childCount == 1) {
+                string parentName = GetDeactivePool(type, parentIndex).GetChild(0).name;
+                Transform instantiated = Instantiate(GetDeactivePool(type, parentIndex).GetChild(0));
+                instantiated.transform.SetParent(GetDeactivePool(type, parentIndex));
                 instantiated.name = parentName;
             }
 
-            Transform target = GetDeactivePool(type).GetChild(0);
+            Transform target = GetDeactivePool(type, parentIndex).GetChild(0);
             target.localScale = Vector3.one;
             Vector3 defaultScale = target.localScale;
 
-            Transform deactiveParent = GetDeactivePool(type);
+            Transform deactiveParent = GetDeactivePool(type, parentIndex);
 
-            target.SetParent(GetActivePool(type));
+            target.SetParent(GetActivePool(type, parentIndex));
 
             Action<Transform> end = (_transform) => {
                 _transform.SetParent(deactiveParent);
                 _transform.localScale = defaultScale;
                 if (type == PoolType.Gold) CurrencyManager.I.EarnGold(1);
                 if (type == PoolType.Dollar) CurrencyManager.I.EarnDollar(1);
-                if(type == PoolType.Case) CurrencyManager.I.EarnCase(1);
-                if(type == PoolType.SpecialGift) CurrencyManager.I.EarnSpecialGift(1);
+                if(type == PoolType.Case) CurrencyManager.I.EarnCase(1, parentIndex);
                 targetParent.DOScale(new Vector3(1.3f,1.3f,1.3f), 0.2f).OnComplete(() => {
                     targetParent.DOScale(Vector3.one, 0.25f);
                 });
@@ -112,21 +110,12 @@ public class CurrencyPool : MonoBehaviour
     }
 
 	
-    private Transform GetDeactivePool(PoolType type) {
-        return pool.Deactives[_pools[type]];
+    private Transform GetDeactivePool(PoolType type, int index) {
+        return pool.Deactives[_pools[type][index]];
     }
 	
 
-    private Transform GetActivePool(PoolType type) {
-        return pool.Actives[_pools[type]];
-    }
-
-	
-    public Dictionary<Transform,PoolType> GetUITypes() {
-        return _uiTypes;
-    }
-
-    private void OnValidate() {
-        
+    private Transform GetActivePool(PoolType type, int index) {
+        return pool.Actives[_pools[type][index]];
     }
 }
