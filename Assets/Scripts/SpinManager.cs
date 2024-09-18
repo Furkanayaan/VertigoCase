@@ -91,8 +91,7 @@ public class SpinManager : MonoBehaviour {
         }
     }
 
-    void Start()
-    {
+    void Start() {
         for (int i = 0; i < allMainObjects.Length; i++) {
             TypeToProp.Add(allMainObjects[i]._objectType, allMainObjects[i]);
         }
@@ -166,13 +165,13 @@ public class SpinManager : MonoBehaviour {
     void WheelController() {
         if (_wheelBGParent.activeSelf) _spinToWin.gameObject.SetActive(false);
         else _spinToWin.gameObject.SetActive(true);
-        if (!bSpin) {
-            _wheelSpin.gameObject.SetActive(true);
-            _wheelSpinClose.gameObject.SetActive(true);
-        }
-        else {
+        if (bSpin || AnimationManager.I.ObjectsToAnim.bAnimationPlay()) {
             _wheelSpin.gameObject.SetActive(false);
             _wheelSpinClose.gameObject.SetActive(false);
+        }
+        else {
+            _wheelSpin.gameObject.SetActive(true);
+            _wheelSpinClose.gameObject.SetActive(true);
         }
         _totalSpinCount.text = "Current Spin Index:  " + (wheelSpinCount + 1);
         if (wheelSpinCount % 30 == 29) {
@@ -255,6 +254,7 @@ public class SpinManager : MonoBehaviour {
         }
 
         else {
+            
             AnimationManager.Type animationType = AnimationManager.Type.QuadraticFour;
             Vector3 currentPos = rewardTransform.position;
 
@@ -273,9 +273,10 @@ public class SpinManager : MonoBehaviour {
                 _gainRewards.SetActive(true);
                 _rewardSprite.GetComponent<Image>().sprite = _transform.GetComponent<Image>().sprite;
                 Destroy(_transform.gameObject);
+                bSpin = false;
             };
 
-            AnimationManager.AnimationProperties props = new(cloneObj.transform, animationType, poses, endAction, 0, 0,
+            AnimationManager.AnimationProperties props = new(cloneObj.transform, animationType, poses, endAction, 0, 1,
                 speed);
             AnimationManager.I.ObjectsToAnim.Add(props);
         }

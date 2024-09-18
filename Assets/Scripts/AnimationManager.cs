@@ -129,6 +129,10 @@ public class AnimationManager : MonoBehaviour
             AnimTypes.RemoveAt(index);
             Actions.RemoveAt(index);
         }
+
+        public bool bAnimationPlay() {
+            return Transforms.Count > 0;
+        }
     }
     
     internal SObjectsToAnim ObjectsToAnim = new(0);
